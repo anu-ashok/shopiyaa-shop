@@ -1,0 +1,119 @@
+<head>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+  </head>
+
+  
+  <body>
+    <header>
+      <div class="logo"><a href="#">SHOPIYAA Shop</a></div>
+      <div class="menu">
+        <a href="#">
+          <ion-icon name="close" class="close"></ion-icon>
+        </a>
+  
+        <ul>
+          <li><a href="#" class="under">HOME</a></li>
+          <li><a href="#" class="under">SHOP</a></li>
+          <li><a href="#" class="under">OUR PRODUCTS</a></li>
+          <li><a href="#" class="under">CONTACT US</a></li>
+          <li><a href="#" class="under">ABOUT US</a></li>
+          <li><a href="cart.html"><ion-icon ios="ios-cart" md="md-cart" style="background-color:black; color:white"></ion-icon></a></li>
+        </ul>
+      </div>
+      <div class="search">
+  
+        <a href=""><input type="text" placeholder="search products" id="input">
+          <ion-icon class="s" name="search"></ion-icon>
+        </a>
+      </div>
+      <div class="heading">
+        <ul>
+          <li><a href="login.html" class="under">LOGIN</a></li>
+          <li><a href="#" class="under">HOME</a></li>
+          <li><a href="#section2" class="under">SHOP</a></li>
+          <li><a href="#section2" class="under">OUR PRODUCTS</a></li>
+          <li><a href="#footer" class="under">CONTACT US</a></li>
+          <li><a href="#footer" class="under">ABOUT US</a></li>
+          <li><a href="cart.html"><ion-icon ios="ios-cart" md="md-cart" style="background-color:black; color:white"></ion-icon></a></li>
+        </ul>
+      </div>
+      <div class="heading1">
+        <ion-icon name="menu" class="ham"></ion-icon>
+      </div>
+    </header>
+    
+    <section>
+      <div class="section">
+        <div class="section1">
+          <div class="img-slider">
+            <img src="https://images.pexels.com/photos/6347888/pexels-photo-6347888.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" class="img">
+            <img src="HANDBAG STARTING.webp" alt="" class="img">
+            <img src="https://images.pexels.com/photos/2292953/pexels-photo-2292953.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" class="img">
+            <img src="https://images.pexels.com/photos/1229861/pexels-photo-1229861.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" class="img">
+            <img src="https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" class="img">
+          </div>
+  
+        </div>
+        <div id="section2" class="section2">
+          <div id="productscard" class="container">
+            
+          </div>
+        </div>
+      </div>
+  
+    </section>
+    <footer>
+      <div id="footer" class="footer0">
+        <h1>WHEN YOU HAVE NOTHING YOU HAVE SHOPIYAA</h1>
+      </div>
+    </footer>
+    
+
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="app.js"></script>
+  <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- Load the Catalog -->
+    <script src="products.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+    <script src="shoppingcart.js"></script>
+    <script>
+
+
+      // called to load a category of product cards into the card deck
+      function loadCategory(category_array){
+
+        // loop through the array of product IDs
+        category_array.forEach(id => {
+
+          // use the IDs as keys to the catalog
+          let card = `
+          <div class="items">
+              <div class="img img1"><img src="${catalog[id].image}" alt=""></div>
+              <div class="name">${catalog[id].name}</div>
+              <div class="price">MRP &#8377;${catalog[id].price}</div>
+              <div class="info">${catalog[id].short_description}
+                <button type="button" onclick="addToCart(${id})">
+                  <iconify-icon inline icon="bi:cart-plus-fill" width="25" style="color: black;"></iconify-icon>
+                </button>
+              </div>
+            </div>
+          `
+          document.getElementById("productscard").innerHTML += card;
+        });
+      }
+
+      // check for query string
+      var current_category = window.location.href.split('=').pop();
+
+      loadCategory(category['best_sellers']);
+      //document.getElementById("home").classList.add("active");
+
+    </script>
+  </body>
+  
+  </html>
